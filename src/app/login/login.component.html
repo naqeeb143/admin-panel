@@ -1,0 +1,17 @@
+<div class="form-container">
+    <p>Login</p>
+<form #login="ngForm" class="form" (ngSubmit)= "onSubmit (login.value)">
+    <label>Email</label>
+    <input type="email" class="input" placeholder="Email" [(ngModel)]="email" name="email" required #refemail="ngModel">
+    <div *ngIf="refemail.invalid && refemail.touched && email ==''&& !email.length" style="color: red;"> Email is requried </div>
+    
+    <label>Password</label>
+    <input type="password" class="input" placeholder="Password" [(ngModel)]="password" name="password" required
+    #refpasword="ngModel" minlength="8" maxlength="20"
+    pattern="^[a-zA-Z0-9!@#$%^&*()_+=[\]{}|\\;',./:>?`~]*\S[a-zA-Z0-9!@#$%^&*()_+=[\]{}|\\;',./:>?`~]*$">
+    <div *ngIf="refpasword.invalid && refpasword.touched && password==''&&!password.length" style="color:red">Password is require</div>
+   
+      
+    <button type="submit" [disabled]="login.invalid" class="btn btn-primary">Submit </button>
+    <a routerLink="/SignUp">Don't Have an Account? <strong>SignUp</strong></a>
+</form>
